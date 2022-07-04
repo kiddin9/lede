@@ -76,15 +76,9 @@
 			};
 
 			partition@50000 {
-				label = "permanent_config";
-				reg = <0x50000 0x50000>;
-				read-only;
-			};
-
-			partition@a0000 {
 				compatible = "denx,uimage";
 				label = "firmware";
-				reg = <0xa0000 0xf60000>;
+				reg = <0x50000 0xfb0000>;
 			};
 		};
 	};
