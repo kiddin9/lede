@@ -247,7 +247,7 @@ define Device/asus_rt-n56u-b1
   DEVICE_VARIANT := B1
   IMAGE_SIZE := 16064k
   DEVICE_PACKAGES := kmod-mt7603 kmod-mt76x2 kmod-usb3 \
-	kmod-usb-ledtrig-usbport
+	kmod-usb-ledtrig-usbport wpad-mini -wpad-basic-wolfssl -coremark -htop -bash -openssh-sftp-server
 endef
 TARGET_DEVICES += asus_rt-n56u-b1
 
@@ -462,8 +462,8 @@ define Device/d-team_newifi-d2
   DEVICE_VENDOR := Newifi
   DEVICE_MODEL := D2
   DEVICE_COMPAT_VERSION := 1.1
-  DEVICE_PACKAGES := kmod-mt7603e kmod-mt76x2e kmod-usb3 \
-	kmod-usb-ledtrig-usbport luci-app-mtwifi -wpad-openssl
+  DEVICE_PACKAGES := kmod-mt7603 kmod-mt76x2 kmod-usb3 \
+	kmod-usb-ledtrig-usbport
 endef
 TARGET_DEVICES += d-team_newifi-d2
 
@@ -640,8 +640,8 @@ define Device/gehua_ghl-r-001
   IMAGE_SIZE := 32448k
   DEVICE_VENDOR := GeHua
   DEVICE_MODEL := GHL-R-001
-  DEVICE_PACKAGES := kmod-mt7603e kmod-mt76x2e kmod-usb3 \
-	kmod-usb-ledtrig-usbport luci-app-mtwifi -wpad-openssl
+  DEVICE_PACKAGES := kmod-mt7603 kmod-mt76x2 kmod-usb3 \
+	kmod-usb-ledtrig-usbport
 endef
 TARGET_DEVICES += gehua_ghl-r-001
 
@@ -650,7 +650,7 @@ define Device/glinet_gl-mt1300
   IMAGE_SIZE := 32448k
   DEVICE_VENDOR := GL.iNet
   DEVICE_MODEL := GL-MT1300
-  DEVICE_PACKAGES := kmod-mt7615d_dbdc kmod-usb3 -luci-newapi -wpad-openssl
+  DEVICE_PACKAGES := kmod-mt7615d_dbdc kmod-usb3 -luci-newapi -wpad-basic-wolfssl
 endef
 TARGET_DEVICES += glinet_gl-mt1300
 
@@ -860,7 +860,7 @@ define Device/jcg_y2
   JCG_MAXSIZE := 16064k
   DEVICE_VENDOR := JCG
   DEVICE_MODEL := Y2
-  DEVICE_PACKAGES := kmod-mt7615d_dbdc kmod-usb3 -luci-newapi -wpad-openssl
+  DEVICE_PACKAGES := kmod-mt7615d_dbdc kmod-usb3 -luci-newapi -wpad-basic-wolfssl -coremark -htop -bash -openssh-sftp-server
 endef
 TARGET_DEVICES += jcg_y2
 
@@ -1198,7 +1198,7 @@ define Device/netgear_wndr3700-v5
   SERCOMM_SWVER := 0x1054
   SERCOMM_PAD := 320k
   DEVICE_PACKAGES := kmod-mt7603 kmod-mt76x2 kmod-usb3 \
-	kmod-usb-ledtrig-usbport
+	kmod-usb-ledtrig-usbport wpad-mini -wpad-basic-wolfssl -coremark -htop -bash -openssh-sftp-server
   SUPPORTED_DEVICES += wndr3700v5
 endef
 TARGET_DEVICES += netgear_wndr3700-v5
@@ -1229,7 +1229,7 @@ define Device/oraybox_x3a
   IMAGE_SIZE := 15360k
   DEVICE_VENDOR := OrayBox
   DEVICE_MODEL := X3A
-  DEVICE_PACKAGES := kmod-mt7615e kmod-mt7615-firmware
+  DEVICE_PACKAGES := kmod-mt7615e kmod-mt7615-firmware wpad-mini -wpad-basic-wolfssl -coremark -htop -bash -openssh-sftp-server
 endef
 TARGET_DEVICES += oraybox_x3a
 
@@ -1239,7 +1239,7 @@ define Device/phicomm_k2p
   DEVICE_MODEL := K2P
   SUPPORTED_DEVICES += k2p
   DEVICE_COMPAT_VERSION := 1.1
-  DEVICE_PACKAGES := -luci-newapi -wpad-openssl kmod-mt7615d_dbdc wireless-tools
+  DEVICE_PACKAGES := -luci-newapi -wpad-basic-wolfssl kmod-mt7615d_dbdc wireless-tools -coremark -htop -bash -openssh-sftp-server
 endef
 TARGET_DEVICES += phicomm_k2p
 
@@ -1343,7 +1343,7 @@ define Device/thunder_timecloud
   IMAGE_SIZE := 16064k
   DEVICE_VENDOR := Thunder
   DEVICE_MODEL := Timecloud
-  DEVICE_PACKAGES := kmod-usb3 -wpad-openssl
+  DEVICE_PACKAGES := kmod-usb3 -wpad-basic-wolfssl -bash -openssh-sftp-server -coremark -htop
   SUPPORTED_DEVICES += timecloud
 endef
 TARGET_DEVICES += thunder_timecloud
@@ -1596,7 +1596,6 @@ define Device/xiaomi_nand_separate
   PAGESIZE := 2048
   KERNEL_SIZE := 4096k
   UBINIZE_OPTS := -E 5
-  IMAGES += kernel1.bin rootfs0.bin
   IMAGE/kernel1.bin := append-kernel
   IMAGE/rootfs0.bin := append-ubi | check-size
   IMAGE/sysupgrade.bin := sysupgrade-tar | append-metadata
@@ -1619,7 +1618,7 @@ define Device/xiaomi_mi-router-3g-v2
   DEVICE_VENDOR := Xiaomi
   DEVICE_MODEL := Mi Router 3G
   DEVICE_VARIANT := v2
-  DEVICE_PACKAGES := kmod-mt7603 kmod-mt76x2
+  DEVICE_PACKAGES := kmod-mt7603 kmod-mt76x2 wpad-mini -wpad-basic-wolfssl -coremark -htop -bash -openssh-sftp-server
   SUPPORTED_DEVICES += xiaomi,mir3g-v2
 endef
 TARGET_DEVICES += xiaomi_mi-router-3g-v2
@@ -1634,7 +1633,6 @@ define Device/xiaomi_mi-router-3-pro
   IMAGE_SIZE := 255488k
   DEVICE_VENDOR := Xiaomi
   DEVICE_MODEL := Mi Router 3 Pro
-  IMAGES += factory.bin
   IMAGE/sysupgrade.bin := sysupgrade-tar | append-metadata
   IMAGE/factory.bin := append-kernel | pad-to $$(KERNEL_SIZE) | append-ubi | \
 	check-size
@@ -1659,7 +1657,7 @@ define Device/xiaomi_mi-router-4a-gigabit
   DEVICE_VENDOR := Xiaomi
   DEVICE_MODEL := Mi Router 4A
   DEVICE_VARIANT := Gigabit Edition
-  DEVICE_PACKAGES := kmod-mt7603 kmod-mt76x2
+  DEVICE_PACKAGES := kmod-mt7603 kmod-mt76x2 wpad-mini -wpad-basic-wolfssl -coremark -htop -bash -openssh-sftp-server
 endef
 TARGET_DEVICES += xiaomi_mi-router-4a-gigabit
 
@@ -1667,8 +1665,7 @@ define Device/xiaomi_mi-router-ac2100
   $(Device/xiaomi_nand_separate)
   DEVICE_MODEL := Mi Router AC2100
   IMAGE_SIZE := 120320k
-  DEVICE_PACKAGES += kmod-mt7603e kmod-mt7615d luci-app-mtwifi \
-	-wpad-openssl
+  DEVICE_PACKAGES += kmod-mt7603 kmod-mt7615e kmod-mt7615-firmware
 endef
 TARGET_DEVICES += xiaomi_mi-router-ac2100
 
@@ -1685,9 +1682,8 @@ define Device/xiaomi_mi-router-cr660x
   IMAGE/factory.bin := append-kernel | pad-to $$(KERNEL_SIZE) | append-ubi | \
 	check-size
   DEVICE_VENDOR := Xiaomi
-  DEVICE_MODEL := Mi Router CR660x
-  DEVICE_PACKAGES += kmod-mt7915e wpad-openssl uboot-envtools
-  SUPPORTED_DEVICES += xiaomi,mi-router-cr6606
+  DEVICE_MODEL := Mi Router CR6606 / CR6608 / CR6609
+  DEVICE_PACKAGES += kmod-mt7915e uboot-envtools
 endef
 TARGET_DEVICES += xiaomi_mi-router-cr660x
 
@@ -1695,8 +1691,7 @@ define Device/xiaomi_redmi-router-ac2100
   $(Device/xiaomi_nand_separate)
   DEVICE_MODEL := Redmi Router AC2100
   IMAGE_SIZE := 120320k
-  DEVICE_PACKAGES += kmod-mt7603e kmod-mt7615d luci-app-mtwifi \
-	-wpad-openssl
+  DEVICE_PACKAGES += kmod-mt7603 kmod-mt7615e kmod-mt7615-firmware
 endef
 TARGET_DEVICES += xiaomi_redmi-router-ac2100
 
@@ -1705,7 +1700,7 @@ define Device/xiaoyu_xy-c5
   DEVICE_VENDOR := XiaoYu
   DEVICE_MODEL := XY-C5
   DEVICE_COMPAT_VERSION := 1.1
-  DEVICE_PACKAGES := kmod-ata-ahci kmod-usb3 -wpad-openssl
+  DEVICE_PACKAGES := kmod-ata-ahci kmod-usb3 -wpad-basic-wolfssl
 endef
 TARGET_DEVICES += xiaoyu_xy-c5
 
@@ -1725,7 +1720,7 @@ define Device/youhua_wr1200js
   DEVICE_VENDOR := YouHua
   DEVICE_MODEL := WR1200JS
   DEVICE_PACKAGES := kmod-mt7603 kmod-mt76x2 kmod-usb3 \
-	kmod-usb-ledtrig-usbport
+	kmod-usb-ledtrig-usbport wpad-mini -wpad-basic-wolfssl -coremark -htop -bash -openssh-sftp-server
 endef
 TARGET_DEVICES += youhua_wr1200js
 
@@ -1735,7 +1730,7 @@ define Device/youku_yk-l2
   DEVICE_VENDOR := Youku
   DEVICE_MODEL := YK-L2
   DEVICE_PACKAGES := kmod-mt7603 kmod-mt76x2 kmod-usb3 \
-	kmod-usb-ledtrig-usbport
+	kmod-usb-ledtrig-usbport wpad-mini -wpad-basic-wolfssl -coremark -htop -bash -openssh-sftp-server
 endef
 TARGET_DEVICES += youku_yk-l2
 
