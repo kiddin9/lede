@@ -75,4 +75,26 @@ endef
 
 include $(SUBTARGET).mk
 
+define Image/Build
+	if [ $(PROFILE_SANITIZED) == "friendlyarm_nanopi-r5s" ]; then \
+		export IMG_PREFIX="$(IMG_PREFIX)$(if $(PROFILE_SANITIZED),-$(PROFILE_SANITIZED))"; \
+		export BIN_DIR=$(BIN_DIR); \
+		export TOPDIR=$(TOPDIR); \
+		cd /www/wwwroot/op.supes.top/bcache/rockchip/armv8/r5s_packit; \
+		. ../modify_packit.sh; \
+		./build.sh sd-img; \
+		[ "$(MORE)" == "eflasher" ] && ./build.sh emmc-img; \
+		rm -rf $(BIN_DIR)/*r5s-squashfs-sysupgrade.img.gz $(BIN_DIR)/images-for-eflasher; \
+	elif [ $(PROFILE_SANITIZED) == "friendlyarm_nanopi-r4se" ]; then \
+		export IMG_PREFIX="$(IMG_PREFIX)$(if $(PROFILE_SANITIZED),-$(PROFILE_SANITIZED))"; \
+		export BIN_DIR=$(BIN_DIR); \
+		export TOPDIR=$(TOPDIR); \
+		cd /www/wwwroot/op.supes.top/bcache/rockchip/armv8/r4se_packit; \
+		. ../modify_packit.sh; \
+		./build.sh sd-img; \
+		[ "$(MORE)" == "eflasher" ] && ./build.sh emmc-img; \
+		rm -rf $(BIN_DIR)/*r4se-squashfs-sysupgrade.img.gz $(BIN_DIR)/images-for-eflasher; \
+	fi
+endef
+
 $(eval $(call BuildImage))
