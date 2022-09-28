@@ -112,7 +112,7 @@ endif
 
 define Device/thunder-onecloud
   DEVICE_DTS := meson8b-onecloud
-  DEVICE_TITLE := Thunder OneCloud
+  DEVICE_TITLE := OneCloud 玩客云
   KERNEL_LOADADDR := 0x00208000
 endef
 ifeq ($(SUBTARGET),meson8b)
