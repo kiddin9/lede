@@ -8,12 +8,12 @@ rockchip_setup_interfaces()
 	local board="$1"
 
 	case "$board" in
-	ariaboard,photonicat|\
 	ezpro,mrkaio-m68s|\
 	friendlyarm,nanopi-r2c|\
 	friendlyarm,nanopi-r2s|\
 	friendlyarm,nanopi-r4s|\
 	friendlyarm,nanopi-r4se|\
+	friendlyarm,nanopi-r5c|\
 	sharevdi,guangmiao-g4c|\
 	xunlong,orangepi-r1-plus|\
 	xunlong,orangepi-r1-plus-lts)
@@ -24,7 +24,7 @@ rockchip_setup_interfaces()
 		;;
 	fastrhino,r66s|\
 	firefly,rk3568-roc-pc|\
-	radxa,e25)
+	radxa,rockpi-e25)
 		ucidef_set_interfaces_lan_wan 'eth0' 'eth1'
 		;;
 	fastrhino,r68s)
@@ -32,6 +32,9 @@ rockchip_setup_interfaces()
 		;;
 	friendlyarm,nanopi-r5s)
 		ucidef_set_interfaces_lan_wan "eth1 eth2" "eth0"
+		;;
+	friendlyarm,nanopi-r6s)
+		ucidef_set_interfaces_lan_wan "eth1 eth0" "eth2"
 		;;
 	*)
 		ucidef_set_interface_lan 'eth0'
@@ -46,7 +49,7 @@ generate_mac_from_mmc_cid()
 	echo "$(macaddr_unsetbit_mc "$(macaddr_setbit_la "${mac_base}")")"
 }
 
-nanopi_r4s_get_mac()
+nanopi_get_mac()
 {
 	local interface=$1
 	local eeprom_path="/sys/bus/i2c/devices/2-0051/eeprom"
@@ -75,7 +78,6 @@ rockchip_setup_macs()
 	local label_mac=""
 
 	case "$board" in
-	ariaboard,photonicat|\
 	ezpro,mrkaio-m68s|\
 	hinlink,opc-h68k|\
 	fastrhino,r66s|\
@@ -90,8 +92,12 @@ rockchip_setup_macs()
 		;;
 	friendlyarm,nanopi-r4s|\
 	friendlyarm,nanopi-r4se)
-		wan_mac=$(nanopi_r4s_get_mac wan)
-		lan_mac=$(nanopi_r4s_get_mac lan)
+		wan_mac=$(nanopi_get_mac wan 2-0051)
+		lan_mac=$(nanopi_get_mac lan 2-0051)
+		;;
+	friendlyarm,nanopi-r6s)
+		wan_mac=$(nanopi_get_mac wan 6-0053)
+		lan_mac=$(nanopi_get_mac lan 6-0053)
 		;;
 	xunlong,orangepi-r1-plus|\
 	xunlong,orangepi-r1-plus-lts)
