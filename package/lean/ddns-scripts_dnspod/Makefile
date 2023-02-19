@@ -41,6 +41,8 @@ endef
 define Package/ddns-scripts_dnspod/install
 	$(INSTALL_DIR) $(1)/usr/lib/ddns
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/*.sh $(1)/usr/lib/ddns
+	$(INSTALL_DIR) $(1)/usr/share/ddns/default
+	$(INSTALL_DATA) ./*.json $(1)/usr/share/ddns/default
 endef
 
 define Package/ddns-scripts_dnspod/postinst
