@@ -41,6 +41,9 @@ endef
 define Package/ddns-scripts_aliyun/install
 	$(INSTALL_DIR) $(1)/usr/lib/ddns
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/update_aliyun_com.sh $(1)/usr/lib/ddns
+	
+	$(INSTALL_DIR) $(1)/usr/share/ddns/default
+	$(INSTALL_DATA) ./aliyun.com.json $(1)/usr/share/ddns/default
 endef
 
 define Package/ddns-scripts_aliyun/postinst
