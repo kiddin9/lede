@@ -28,6 +28,18 @@ set_interface_core() {
 }
 
 case "$(board_name)" in
+friendlyarm,nanopi-r6s)
+	set_interface_core 2 "eth0"
+	echo 3e > /sys/class/net/eth0/queues/rx-0/rps_cpus
+	set_interface_core 10 "eth1-0"
+	set_interface_core 20 "eth1-16"
+	set_interface_core 20 "eth1-18"
+	echo fe > /sys/class/net/eth1/queues/rx-0/rps_cpus
+	set_interface_core 40 "eth2-0"
+	set_interface_core 80 "eth2-16"
+	set_interface_core 80 "eth2-18"
+	echo fe > /sys/class/net/eth2/queues/rx-0/rps_cpus
+	;;
 fastrhino,r66s|\
 friendlyarm,nanopi-r5c|\
 firefly,rk3568-roc-pc)
