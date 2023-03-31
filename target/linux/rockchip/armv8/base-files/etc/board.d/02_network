@@ -19,9 +19,14 @@ rockchip_setup_interfaces()
 	rocktech,mpc1903|\
 	sharevdi,guangmiao-g4c|\
 	xunlong,orangepi-r1-plus|\
-	xunlong,orangepi-r1-plus-lts)
+	xunlong,orangepi-r1-plus-lts|\
+	friendlyarm,nanopi-r6c)
 		ucidef_set_interfaces_lan_wan 'eth1' 'eth0'
 		;;
+	friendlyarm,nanopi-r6c)
+		ucidef_set_interfaces_lan_wan "eth1 eth0" "eth2"
+		;;
+	*)
 	hinlink,opc-h68k|\
 	hinlink,opc-h69k)
 		ucidef_set_interfaces_lan_wan 'eth1 eth2 eth3' 'eth0'
@@ -38,7 +43,6 @@ rockchip_setup_interfaces()
 	friendlyarm,nanopi-r5s)
 		ucidef_set_interfaces_lan_wan "eth1 eth2" "eth0"
 		;;
-	*)
 		ucidef_set_interface_lan 'eth0'
 		;;
 	esac
@@ -51,10 +55,10 @@ generate_mac_from_mmc_cid()
 	echo "$(macaddr_unsetbit_mc "$(macaddr_setbit_la "${mac_base}")")"
 }
 
-nanopi_r4s_get_mac()
+nanopi_get_mac()
 {
 	local interface=$1
-	local eeprom_path="/sys/bus/i2c/devices/2-0051/eeprom"
+	local eeprom_path="/sys/bus/i2c/devices/$2/eeprom"
 	local address
 
 	if [ -f "$eeprom_path" ]; then
@@ -63,7 +67,7 @@ nanopi_r4s_get_mac()
 			address=$(macaddr_setbit_la "$address")
 		fi
 	else
-		address=$(generate_mac_from_mmc_cid)
+		address=$(generate_mac_from_mmc_cid ${root_dev})
 		if [ "$interface" = "lan" ]; then
 			address=$(macaddr_add "$address" 1)
 		fi
@@ -100,8 +104,12 @@ rockchip_setup_macs()
 		;;
 	friendlyarm,nanopi-r4s|\
 	friendlyarm,nanopi-r4se)
-		wan_mac=$(nanopi_r4s_get_mac wan)
-		lan_mac=$(nanopi_r4s_get_mac lan)
+		wan_mac=$(nanopi_get_mac wan 2-0051)
+		lan_mac=$(nanopi_get_mac lan 2-0051)
+		;;
+	nanopi-r6s|nanopi-r6c)
+		wan_mac=$(nanopi_get_mac wan 6-0053)
+		lan_mac=$(nanopi_get_mac lan 6-0053)
 		;;
 	xunlong,orangepi-r1-plus|\
 	xunlong,orangepi-r1-plus-lts)
