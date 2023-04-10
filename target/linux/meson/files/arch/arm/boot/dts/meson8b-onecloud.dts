@@ -137,7 +137,7 @@
 	pinctrl-names = "default";
 
 	phy-handle = <&eth_phy>;
-	phy-mode = "rgmii-id";
+	phy-mode = "rgmii-rxid";
 
 	mdio {
 		compatible = "snps,dwmac-mdio";
