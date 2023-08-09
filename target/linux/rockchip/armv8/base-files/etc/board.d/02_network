@@ -39,6 +39,11 @@ rockchip_setup_interfaces()
 	friendlyarm,nanopi-r5s)
 		ucidef_set_interfaces_lan_wan "eth1 eth2" "eth0"
 		;;
+	ockchip,pico3399)
+		ucidef_set_interfaces_lan_wan 'eth0' 'eth1'
+		ucidef_add_switch "switch0" \
+			"0@eth0" "1:lan:1" "2:lan:2" "3:lan:3" "4:lan:4"
+		;;
 	*)
 		ucidef_set_interface_lan 'eth0'
 		;;
@@ -88,6 +93,7 @@ rockchip_setup_macs()
 	hinlink,opc-h68k|\
 	hinlink,opc-h69k|\
 	rocktech,mpc1903|\
+	rockchip,pico3399|\
 	sharevdi,h3399pc)
 		wan_mac=$(macaddr_generate_from_mmc_cid mmcblk0)
 		lan_mac=$(macaddr_add "$wan_mac" +1)
