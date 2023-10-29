@@ -46,12 +46,19 @@ endef
 
 define Device/thunder-onecloud
   DEVICE_DTS := meson8b-onecloud
-  DEVICE_TITLE := Thunder OneCloud
+  DEVICE_TITLE := OneCloud 玩客云
+  DEVICE_PACKAGES += kmod-usb-net-rtl8152
   KERNEL_LOADADDR := 0x00208000
   IMAGE/emmc.img := boot-script onecloud | emmc-common $$(DEVICE_NAME)
 endef
 ifeq ($(SUBTARGET),meson8b)
   TARGET_DEVICES += thunder-onecloud
 endif
+
+define Image/Build
+  	export BIN_DIR=$(BIN_DIR); \
+  	cd /data/packit/openwrt-onecloud; \
+  	. ~/packit/packit_onecloud1.sh;
+endef
 
 $(eval $(call BuildImage))
