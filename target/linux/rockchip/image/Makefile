@@ -79,4 +79,23 @@ endif
 
 include $(SUBTARGET).mk
 
+define Image/Build
+	if [[ "$(PROFILE_SANITIZED)" == "friendlyarm_nanopc-t6" ]]; then \
+		export IMG_PREFIX="$(IMG_PREFIX)$(if $(PROFILE_SANITIZED),-$(PROFILE_SANITIZED))"; \
+		export BIN_DIR=$(BIN_DIR); \
+		export TOPDIR=$(TOPDIR); \
+		export MORE=$(MORE); \
+		cd /data/packit/friendlywrt23-rk3588; \
+		. ~/packit/packit_nanopi.sh; \
+	fi
+	if [[ "$(PROFILE_SANITIZED)" == "friendlyarm_nanopi-m4" || "$(PROFILE_SANITIZED)" == "friendlyarm_nanopc-t4" || "$(PROFILE_SANITIZED)" == "friendlyarm_nanopi-neo4" ]]; then \
+		export IMG_PREFIX="$(IMG_PREFIX)$(if $(PROFILE_SANITIZED),-$(PROFILE_SANITIZED))"; \
+		export BIN_DIR=$(BIN_DIR); \
+		export TOPDIR=$(TOPDIR); \
+		export MORE=$(MORE); \
+		cd /data/packit/friendlywrt23-rk3399; \
+		. ~/packit/packit_nanopi.sh; \
+	fi
+endef
+
 $(eval $(call BuildImage))
