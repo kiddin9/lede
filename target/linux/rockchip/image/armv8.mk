@@ -141,6 +141,52 @@ define Device/friendlyarm_nanopi-r5s
 endef
 TARGET_DEVICES += friendlyarm_nanopi-r5s
 
++define Device/friendlyarm_nanopi-m4
++  DEVICE_VENDOR := FriendlyARM
++  DEVICE_MODEL := NanoPi M4
++  SOC := rk3328
++  DEVICE_PACKAGES := -luci-app-gpsysupgrade
++  DEVICE_DTS = rockchip/rk3328-nanopi-r2s
++endef
++TARGET_DEVICES += friendlyarm_nanopi-m4
++
++define Device/friendlyarm_nanopi-neo4
++  DEVICE_VENDOR := FriendlyARM
++  DEVICE_MODEL := NanoPi NEO4
++  SOC := rk3328
++  DEVICE_PACKAGES := -luci-app-gpsysupgrade
++  DEVICE_DTS = rockchip/rk3328-nanopi-r2s
++endef
++TARGET_DEVICES += friendlyarm_nanopi-neo4
++
++define Device/friendlyarm_nanopc-t4
++  DEVICE_VENDOR := FriendlyARM
++  DEVICE_MODEL := NanoPC T4
++  SOC := rk3328
++  DEVICE_PACKAGES := -luci-app-gpsysupgrade
++  DEVICE_DTS = rockchip/rk3328-nanopi-r2s
++endef
++TARGET_DEVICES += friendlyarm_nanopc-t4
++
++define Device/friendlyarm_nanopc-t6
++  DEVICE_VENDOR := FriendlyARM
++  DEVICE_MODEL := NanoPC T6
++  SOC := rk3328
++  DEVICE_PACKAGES := -luci-app-gpsysupgrade
++  DEVICE_DTS = rockchip/rk3328-nanopi-r2s
++endef
++TARGET_DEVICES += friendlyarm_nanopc-t6
++
++define Device/friendlyarm_nanopi-r2s-plus
++  DEVICE_VENDOR := FriendlyARM
++  DEVICE_MODEL := NanoPi R2S Plus
++  SOC := rk3328
++  DEVICE_PACKAGES := -luci-app-gpsysupgrade
++  DEVICE_DTS = rockchip/rk3328-nanopi-r2s
++  DEVICE_PACKAGES := kmod-usb-net-rtl8152
++endef
++TARGET_DEVICES += friendlyarm_nanopi-r2s-plus
++
 define Device/firefly_station-p2
   DEVICE_VENDOR := Firefly
   DEVICE_MODEL := Station P2
