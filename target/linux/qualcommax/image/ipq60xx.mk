@@ -10,6 +10,12 @@ define Device/FitImageLzma
 	KERNEL_NAME := Image
 endef
 
+define Device/EmmcImage
+	IMAGES += factory.bin sysupgrade.bin
+	IMAGE/factory.bin := append-rootfs | pad-rootfs | pad-to 64k
+	IMAGE/sysupgrade.bin/squashfs := append-rootfs | pad-to 64k | sysupgrade-tar rootfs=$$$$@ | append-metadata
+endef
+
 define Device/UbiFit
 	KERNEL_IN_UBI := 1
 	IMAGES := factory.ubi sysupgrade.bin
@@ -42,6 +48,20 @@ define Device/glinet_gl-axt1800
 	DEVICE_PACKAGES := ipq-wifi-glinet_gl-axt1800 kmod-hwmon-gpiofan
 endef
 TARGET_DEVICES += glinet_gl-axt1800
+
+define Device/jdc_ax1800-pro
+	$(call Device/FitImage)
+	DEVICE_VENDOR := JDCloud
+	DEVICE_MODEL := AX1800 Pro
+	BLOCKSIZE := 64k
+	KERNEL_SIZE := 6144k
+	DEVICE_DTS_CONFIG := config@cp03-c2
+	SOC := ipq6000
+	DEVICE_PACKAGES := ipq-wifi-jdc_ax1800-pro kmod-fs-ext4 mkf2fs f2fsck kmod-fs-f2fs
+	IMAGES += factory.bin
+	IMAGE/factory.bin := append-kernel | pad-to 6144k |  append-rootfs | append-metadata
+endef
+TARGET_DEVICES += jdc_ax1800-pro
 
 define Device/linksys_mr7350
 	$(call Device/FitImage)
