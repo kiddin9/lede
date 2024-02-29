@@ -28,6 +28,8 @@ define Device/cmiot_ax18
 	$(call Device/UbiFit)
 	DEVICE_VENDOR := CMIOT
 	DEVICE_MODEL := AX18
+	DEVICE_ALT0_VENDOR := ZN
+	DEVICE_ALT0_MODEL := M2
 	BLOCKSIZE := 128k
 	PAGESIZE := 2048
 	DEVICE_DTS_CONFIG := config@cp03-c1
