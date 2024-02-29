@@ -18,6 +18,9 @@ ipq60xx_setup_interfaces()
 	glinet,gl-axt1800)
 		ucidef_set_interfaces_lan_wan "lan1 lan2" "wan"
 		;;
+	jdc,ax1800-pro)
+		ucidef_set_interfaces_lan_wan "eth0 eth1 eth2" "eth3"
+		;;
 	qihoo,360v6|\
 	redmi,ax5-*|\
 	xiaomi,rm1800)
