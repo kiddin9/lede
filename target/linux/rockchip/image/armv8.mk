@@ -3,7 +3,7 @@
 # Copyright (C) 2020 Tobias Maedel
 
 define Device/ariaboard_photonicat
-  DEVICE_VENDOR := Ariaboard
+  DEVICE_VENDOR := 光影猫
   DEVICE_MODEL := Photonicat
   SOC := rk3568
   UBOOT_DEVICE_NAME := photonicat-rk3568
@@ -28,7 +28,7 @@ define Device/dilusense_dlfr100
   SOC := rk3399
   UBOOT_DEVICE_NAME := dilusense-dlfr100-rk3399
   IMAGE/sysupgrade.img.gz := boot-common | boot-script | pine64-bin | gzip | append-metadata
-  DEVICE_PACKAGES := kmod-r8168 -urngd
+  DEVICE_PACKAGES := kmod-r8169 -urngd
 endef
 TARGET_DEVICES += dilusense_dlfr100
 
@@ -72,6 +72,17 @@ $(call Device/fastrhino_common)
 endef
 TARGET_DEVICES += fastrhino_r68s
 
+define Device/nlnet_xgp
+  DEVICE_VENDOR := NLnet
+  DEVICE_MODEL := XiGuaPi
+  SOC := rk3568
+  UBOOT_DEVICE_NAME := nlnet-xgp-rk3568
+  IMAGE/sysupgrade.img.gz := boot-combined | boot-script nlnet-xgp | pine64-img | gzip | append-metadata
+  DEVICE_PACKAGES := kmod-hwmon-pwmfan kmod-mt7921e wpad-openssl
+  DEVICE_DTS = rockchip/rk3568-xgp rockchip/rk3568-xgp-v3
+endef
+TARGET_DEVICES += nlnet_xgp
+
 define Device/friendlyarm_nanopi-neo3
   DEVICE_VENDOR := FriendlyARM
   DEVICE_MODEL := NanoPi NEO3
@@ -91,9 +102,19 @@ define Device/friendlyarm_nanopi-r2c
 endef
 TARGET_DEVICES += friendlyarm_nanopi-r2c
 
+define Device/friendlyarm_nanopi-r2c-plus
+  DEVICE_VENDOR := FriendlyARM
+  DEVICE_MODEL := NanoPi R2C Plus
+  SOC := rk3328
+  UBOOT_DEVICE_NAME := nanopi-r2c-plus-rk3328
+  IMAGE/sysupgrade.img.gz := boot-common | boot-script nanopi-r2s | pine64-bin | gzip | append-metadata
+  DEVICE_PACKAGES := kmod-usb-net-rtl8152
+endef
+TARGET_DEVICES += friendlyarm_nanopi-r2c-plus
+
 define Device/friendlyarm_nanopi-r2s
   DEVICE_VENDOR := FriendlyARM
-  DEVICE_MODEL := NanoPi R2S
+  DEVICE_MODEL := NanoPi R2S / R2S Plus
   SOC := rk3328
   UBOOT_DEVICE_NAME := nanopi-r2s-rk3328
   IMAGE/sysupgrade.img.gz := boot-common | boot-script nanopi-r2s | pine64-bin | gzip | append-metadata
@@ -107,7 +128,7 @@ define Device/friendlyarm_nanopi-r4s
   SOC := rk3399
   UBOOT_DEVICE_NAME := nanopi-r4s-rk3399
   IMAGE/sysupgrade.img.gz := boot-common | boot-script nanopi-r4s | pine64-bin | gzip | append-metadata
-  DEVICE_PACKAGES := kmod-r8168 -urngd
+  DEVICE_PACKAGES := kmod-r8169 -urngd
 endef
 TARGET_DEVICES += friendlyarm_nanopi-r4s
 
@@ -117,7 +138,7 @@ define Device/friendlyarm_nanopi-r4se
   SOC := rk3399
   UBOOT_DEVICE_NAME := nanopi-r4se-rk3399
   IMAGE/sysupgrade.img.gz := boot-common | boot-script nanopi-r4s | pine64-bin | gzip | append-metadata
-  DEVICE_PACKAGES := kmod-r8168 -urngd
+  DEVICE_PACKAGES := kmod-r8169 -urngd
 endef
 TARGET_DEVICES += friendlyarm_nanopi-r4se
 
@@ -140,6 +161,38 @@ define Device/friendlyarm_nanopi-r5s
   DEVICE_PACKAGES := kmod-r8125 kmod-nvme kmod-scsi-core
 endef
 TARGET_DEVICES += friendlyarm_nanopi-r5s
+
+define Device/friendlyarm_nanopi-m4
+  DEVICE_VENDOR := FriendlyARM
+  DEVICE_MODEL := NanoPi M4
+  SOC := rk3328
+  DEVICE_DTS = rockchip/rk3328-nanopi-r2s
+endef
+TARGET_DEVICES += friendlyarm_nanopi-m4
+
+define Device/friendlyarm_nanopi-neo4
+  DEVICE_VENDOR := FriendlyARM
+  DEVICE_MODEL := NanoPi NEO4
+  SOC := rk3328
+  DEVICE_DTS = rockchip/rk3328-nanopi-r2s
+endef
+TARGET_DEVICES += friendlyarm_nanopi-neo4
+
+define Device/friendlyarm_nanopc-t4
+  DEVICE_VENDOR := FriendlyARM
+  DEVICE_MODEL := NanoPC T4
+  SOC := rk3328
+  DEVICE_DTS = rockchip/rk3328-nanopi-r2s
+endef
+TARGET_DEVICES += friendlyarm_nanopc-t4
+
+define Device/friendlyarm_nanopc-t6
+  DEVICE_VENDOR := FriendlyARM
+  DEVICE_MODEL := NanoPC T6
+  SOC := rk3328
+  DEVICE_DTS = rockchip/rk3328-nanopi-r2s
+endef
+TARGET_DEVICES += friendlyarm_nanopc-t6
 
 define Device/firefly_station-p2
   DEVICE_VENDOR := Firefly
@@ -247,7 +300,7 @@ define Device/rongpin_king3399
   SOC := rk3399
   UBOOT_DEVICE_NAME := rongpin-king3399-rk3399
   IMAGE/sysupgrade.img.gz := boot-common | boot-script nanopi-r4s | pine64-bin | gzip | append-metadata
-  DEVICE_PACKAGES := kmod-r8168 -urngd kmod-brcmfmac cypress-firmware-4356-sdio rongpin-king3399-firmware wpad-openssl
+  DEVICE_PACKAGES := kmod-r8169 -urngd kmod-brcmfmac cypress-firmware-4356-sdio rongpin-king3399-firmware wpad-openssl
 endef
 TARGET_DEVICES += rongpin_king3399
 
@@ -278,7 +331,7 @@ define Device/sharevdi_h3399pc
   SOC := rk3399
   UBOOT_DEVICE_NAME := sharevdi-h3399pc-rk3399
   IMAGE/sysupgrade.img.gz := boot-common | boot-script nanopi-r4s | pine64-bin | gzip | append-metadata
-  DEVICE_PACKAGES := kmod-r8168 -urngd
+  DEVICE_PACKAGES := kmod-r8169 -urngd
 endef
 TARGET_DEVICES += sharevdi_h3399pc
 
@@ -288,7 +341,7 @@ define Device/sharevdi_guangmiao-g4c
   SOC := rk3399
   UBOOT_DEVICE_NAME := guangmiao-g4c-rk3399
   IMAGE/sysupgrade.img.gz := boot-common | boot-script nanopi-r4s | pine64-img | gzip | append-metadata
-  DEVICE_PACKAGES := kmod-r8168 -urngd
+  DEVICE_PACKAGES := kmod-r8169 -urngd
 endef
 TARGET_DEVICES += sharevdi_guangmiao-g4c
 
