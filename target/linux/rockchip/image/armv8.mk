@@ -72,6 +72,16 @@ $(call Device/fastrhino_common)
 endef
 TARGET_DEVICES += fastrhino_r68s
 
+define Device/friendlyarm_nanopc-t4
+  DEVICE_VENDOR := FriendlyARM
+  DEVICE_MODEL := NanoPC T4
+  SOC := rk3399
+  BOOT_FLOW := pine64-bin
+  DEVICE_PACKAGES := kmod-brcmfmac wpad-basic-wolfssl \
+	brcmfmac-firmware-4356-sdio brcmfmac-nvram-4356-sdio
+endef
+TARGET_DEVICES += friendlyarm_nanopc-t4
+
 define Device/friendlyarm_nanopi-neo3
   DEVICE_VENDOR := FriendlyARM
   DEVICE_MODEL := NanoPi NEO3
