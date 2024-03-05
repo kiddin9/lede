@@ -82,6 +82,13 @@ define U-Boot/guangmiao-g4c-rk3399
   ATF:=rk3399_bl31.elf
 endef
 
+define U-Boot/nanopc-t4-rk3399
+  $(U-Boot/Default/rk3399)
+  NAME:=NanoPC T4
+  BUILD_DEVICES:= \
+    friendlyarm_nanopc-t4
+endef
+
 define U-Boot/nanopi-r4s-rk3399
   BUILD_SUBTARGET:=armv8
   NAME:=NanoPi R4S
@@ -309,6 +316,65 @@ define U-Boot/station-p2-rk3568
   DDR:=rk3568_ddr_1560MHz_v1.18.bin
 endef
 
+define U-Boot/Default/rk3588
+  BUILD_SUBTARGET:=armv8
+  DEPENDS:=+PACKAGE_u-boot-$(1):trusted-firmware-a-rk3588
+  ATF:=$(RK3588_ATF)
+  TPL:=$(RK3588_TPL)
+endef
+
+define U-Boot/nanopc-t6-rk3588
+  $(U-Boot/Default/rk3588)
+  NAME:=NanoPC T6
+  BUILD_DEVICES:= \
+    friendlyarm_nanopc-t6
+endef
+
+define U-Boot/orangepi-5-plus-rk3588
+  $(U-Boot/Default/rk3588)
+  NAME:=OrangePi 5 Plus
+  BUILD_DEVICES:= \
+    xunlong_orangepi-5-plus
+endef
+
+define U-Boot/rock5b-rk3588
+  $(U-Boot/Default/rk3588)
+  NAME:=Rock 5B
+  BUILD_DEVICES:= \
+    radxa_rock-5b
+endef
+
+
+# RK3588S boards
+
+define U-Boot/nanopi-r6c-rk3588s
+  $(U-Boot/Default/rk3588)
+  NAME:=NanoPi R6C
+  BUILD_DEVICES:= \
+    friendlyarm_nanopi-r6c
+endef
+
+define U-Boot/nanopi-r6s-rk3588s
+  $(U-Boot/Default/rk3588)
+  NAME:=NanoPi R6S
+  BUILD_DEVICES:= \
+    friendlyarm_nanopi-r6s
+endef
+
+define U-Boot/orangepi-5-rk3588s
+  $(U-Boot/Default/rk3588)
+  NAME:=OrangePi 5
+  BUILD_DEVICES:= \
+    xunlong_orangepi-5
+endef
+
+define U-Boot/rock5a-rk3588s
+  $(U-Boot/Default/rk3588)
+  NAME:=Rock 5A
+  BUILD_DEVICES:= \
+    radxa_rock-5a
+endef
+
 UBOOT_TARGETS := \
   lyt-t68m-rk3568 \
   mrkaio-m68s-rk3568 \
@@ -322,6 +388,7 @@ UBOOT_TARGETS := \
   panther-x2-rk3566 \
   sharevdi-h3399pc-rk3399 \
   guangmiao-g4c-rk3399 \
+  nanopc-t4-rk3399 \
   nanopi-r4s-rk3399 \
   nanopi-r4se-rk3399 \
   nanopi-r5s-rk3568 \
@@ -334,7 +401,14 @@ UBOOT_TARGETS := \
   nanopi-r2c-rk3328 \
   nanopi-r2s-rk3328 \
   orangepi-r1-plus-rk3328 \
-  orangepi-r1-plus-lts-rk3328
+  orangepi-r1-plus-lts-rk3328 \
+  nanopc-t6-rk3588 \
+  orangepi-5-plus-rk3588 \
+  rock5b-rk3588 \
+  nanopi-r6c-rk3588s \
+  nanopi-r6s-rk3588s \
+  orangepi-5-rk3588s \
+  rock5a-rk3588s
 
 UBOOT_CONFIGURE_VARS += USE_PRIVATE_LIBGCC=yes
 
