@@ -40,16 +40,19 @@ rockchip_setup_interfaces()
 	friendlyarm,nanopi-r5s)
 		ucidef_set_interfaces_lan_wan "eth1 eth2" "eth0"
 		;;
+	friendlyarm,nanopi-r6s)
+		ucidef_set_interfaces_lan_wan 'eth0 eth1' 'eth2'
+		;;
 	*)
 		ucidef_set_interface_lan 'eth0'
 		;;
 	esac
 }
 
-nanopi_r4s_get_mac()
+nanopi_get_mac()
 {
 	local interface=$1
-	local eeprom_path="/sys/bus/i2c/devices/2-0051/eeprom"
+	local eeprom_path="/sys/bus/i2c/devices/$2/eeprom"
 	local address
 
 	if [ -f "$eeprom_path" ]; then
@@ -95,8 +98,12 @@ rockchip_setup_macs()
 		;;
 	friendlyarm,nanopi-r4s|\
 	friendlyarm,nanopi-r4se)
-		wan_mac=$(nanopi_r4s_get_mac wan)
-		lan_mac=$(nanopi_r4s_get_mac lan)
+		wan_mac=$(nanopi_get_mac wan 2-0051)
+		lan_mac=$(nanopi_get_mac lan 2-0051)
+		;;
+	nanopi-r6s|nanopi-r6c|nanopc-t6)
+		wan_mac=$(nanopi_get_mac wan 6-0053)
+		lan_mac=$(nanopi_get_mac lan 6-0053)
 		;;
 	friendlyarm,nanopi-r5c|\
 	friendlyarm,nanopi-r5s|\
