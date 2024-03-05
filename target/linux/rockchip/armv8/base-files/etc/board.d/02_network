@@ -24,6 +24,9 @@ rockchip_setup_interfaces()
 	xunlong,orangepi-r1-plus-lts)
 		ucidef_set_interfaces_lan_wan 'eth1' 'eth0'
 		;;
+	friendlyarm,nanopc-t6)
+		ucidef_set_interfaces_lan_wan 'eth1' 'eth2'
+		;;
 	fastrhino,r66s|\
 	firefly,rk3568-roc-pc|\
 	friendlyarm,nanopi-r5c|\
@@ -83,6 +86,7 @@ rockchip_setup_macs()
 	fastrhino,r66s|\
 	fastrhino,r68s|\
 	firefly,rk3568-roc-pc|\
+	friendlyarm,nanopc-t6|\
 	friendlyarm,nanopi-r2c|\
 	friendlyarm,nanopi-r2s|\
 	hinlink,opc-h66k|\
