@@ -34,6 +34,10 @@ firefly,rk3568-roc-pc)
 	set_interface_core 2 "eth0"
 	set_interface_core 4 "eth1"
 	;;
+friendlyarm,nanopc-t6)
+	set_interface_core 2 "eth1"
+	set_interface_core 4 "eth2"
+	;;
 friendlyarm,nanopi-r2c|\
 friendlyarm,nanopi-r2s|\
 seewo,sv21-rk3568|\
