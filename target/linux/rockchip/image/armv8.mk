@@ -141,6 +141,24 @@ define Device/friendlyarm_nanopi-r5s
 endef
 TARGET_DEVICES += friendlyarm_nanopi-r5s
 
+define Device/friendlyarm_nanopi-r6c
+  DEVICE_VENDOR := FriendlyARM
+  DEVICE_MODEL := NanoPi R6C
+  SOC := rk3588s
+  BOOT_FLOW := pine64-img
+  DEVICE_PACKAGES := kmod-r8125
+endef
+TARGET_DEVICES += friendlyarm_nanopi-r6c
+
+define Device/friendlyarm_nanopi-r6s
+  DEVICE_VENDOR := FriendlyARM
+  DEVICE_MODEL := NanoPi R6S
+  SOC := rk3588s
+  BOOT_FLOW := pine64-img
+  DEVICE_PACKAGES := kmod-r8125
+endef
+TARGET_DEVICES += friendlyarm_nanopi-r6s
+
 define Device/firefly_station-p2
   DEVICE_VENDOR := Firefly
   DEVICE_MODEL := Station P2
