@@ -11,7 +11,8 @@ endef
 
 define Device/thunder-onecloud
   DEVICE_DTS := meson8b-onecloud
-  DEVICE_TITLE := Thunder OneCloud
+  DEVICE_TITLE := OneCloud 玩客云
+  DEVICE_PACKAGES += kmod-usb-net-rtl8152
   KERNEL_LOADADDR := 0x00208000
   IMAGE/emmc.img := boot-script onecloud | emmc-common $$(DEVICE_NAME)
 endef
