@@ -88,4 +88,12 @@ endef
 
 include $(SUBTARGET).mk
 
+define Image/Build
+  if [ "$(PROFILE_SANITIZED)" == "thunder-onecloud" ]; then \
+  export BIN_DIR=$(BIN_DIR); \
+  cd /data/packit/openwrt-onecloud || true; \
+  . ~/packit/packit_onecloud1.sh || true;
+  fi
+endef
+
 $(eval $(call BuildImage))
