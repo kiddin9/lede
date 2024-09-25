@@ -69,28 +69,28 @@ define U-Boot/rk3399/Default
   ATF:=rk3399_bl31.elf
 endef
 
-define U-Boot/dlfr100-rk3399
+define U-Boot/dilusense-dlfr100-rk3399
   $(U-Boot/rk3399/Default)
   NAME:=Dilusense DLFR100
   BUILD_DEVICES:= \
     dilusense_dlfr100
 endef
 
-define U-Boot/h3399pc-rk3399
+define U-Boot/sharevdi-h3399pc-rk3399
   $(U-Boot/rk3399/Default)
   NAME:=SHAREVDI H3399PC
   BUILD_DEVICES:= \
     sharevdi_h3399pc
 endef
 
-define U-Boot/king3399-rk3399
+define U-Boot/rongpin-king3399-rk3399
   $(U-Boot/rk3399/Default)
   NAME:=Rongpin King3399
   BUILD_DEVICES:= \
     rongpin_king3399
 endef
 
-define U-Boot/mpc1903-rk3399
+define U-Boot/rocktech-mpc1903-rk3399
   $(U-Boot/rk3399/Default)
   NAME:=Rocktech MPC1903
   BUILD_DEVICES:= \
@@ -264,7 +264,7 @@ define U-Boot/rock-3a-rk3568
     radxa_rock-3a
 endef
 
-define U-Boot/rsb4810-rk3568
+define U-Boot/advantech-rsb4810-rk3568
   $(U-Boot/rk3568/Default)
   NAME:=Advantech RSB4810
   BUILD_DEVICES:= \
@@ -319,15 +319,15 @@ UBOOT_TARGETS := \
   r66s-rk3568 \
   radxa-e25-rk3568 \
   rock-3a-rk3568 \
-  rsb4810-rk3568 \
+  advantech-rsb4810-rk3568 \
   seewo-sv21-rk3568 \
   sige3-rk3568 \
   station-p2-rk3568 \
-  dlfr100-rk3399 \
+  dilusense-dlfr100-rk3399 \
   fine-3399-rk3399 \
-  h3399pc-rk3399 \
-  king3399-rk3399 \
-  mpc1903-rk3399 \
+  sharevdi-h3399pc-rk3399 \
+  rongpin-king3399-rk3399 \
+  rocktech-mpc1903-rk3399 \
   nanopc-t4-rk3399 \
   nanopi-r4s-rk3399 \
   nanopi-r4se-rk3399 \
