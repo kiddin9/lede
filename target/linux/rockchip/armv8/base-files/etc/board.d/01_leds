@@ -14,6 +14,7 @@ friendlyarm,nanopi-r2s)
 	ucidef_set_led_netdev "wan" "WAN" "$boardname:green:wan" "eth0"
 	ucidef_set_led_netdev "lan" "LAN" "$boardname:green:lan" "eth1"
 	;;
+friendlyarm,nanopi-r3s|\
 friendlyarm,nanopi-r4s|\
 friendlyarm,nanopi-r4se|\
 sharevdi,guangmiao-g4c|\
