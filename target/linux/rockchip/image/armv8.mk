@@ -264,6 +264,16 @@ define Device/friendlyarm_nanopi-r6s
 endef
 TARGET_DEVICES += friendlyarm_nanopi-r6s
 
+define Device/friendlyarm_nanopi-zero2
+  DEVICE_VENDOR := FriendlyARM
+  DEVICE_MODEL := NanoPi Zero2
+  SOC := rk3328
+  UBOOT_DEVICE_NAME := nanopi-r2s-rk3328
+  DEVICE_PACKAGES := -luci-app-gpsysupgrade
+  DEVICE_DTS = rockchip/rk3328-nanopi-r2s
+endef
+TARGET_DEVICES += friendlyarm_nanopi-zero2
+
 define Device/firefly_station-p2
   DEVICE_VENDOR := Firefly
   DEVICE_MODEL := Station P2
