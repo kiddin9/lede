@@ -58,6 +58,8 @@ ALLWIFIBOARDS:= \
 	xiaomi_ax6000 \
 	xiaomi_ax9000 \
 	xiaomi_rm1800 \
+	xiaomi_ax1800 \
+	zn_m2 \
 	yuncore_ax880 \
 	yuncore_fap650 \
 	zbtlink_zbt-z800ax \
