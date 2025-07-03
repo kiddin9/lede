@@ -28,6 +28,9 @@ zyxel,nbg7815)
 		ubootenv_add_uci_config "/dev/mtd$idx" "0x0" "0x10000" "0x10000" "1"
 	;;
 dynalink,dl-wrx36|\
+redmi,ax5|\
+xiaomi,ax1800|\
+zn,m2|\
 glinet,gl-ax1800|\
 glinet,gl-axt1800|\
 netgear,rax120v2|\
