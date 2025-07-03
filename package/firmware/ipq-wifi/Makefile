@@ -58,6 +58,8 @@ ALLWIFIBOARDS:= \
 	xiaomi_ax6000 \
 	xiaomi_ax9000 \
 	xiaomi_rm1800 \
+	xiaomi_ax1800 \
+	zn_m2 \
 	yuncore_ax880 \
 	yuncore_fap650 \
 	zbtlink_zbt-z800ax \
@@ -183,5 +185,7 @@ $(eval $(call generate-ipq-wifi-package,zte_mf269,ZTE MF269))
 $(eval $(call generate-ipq-wifi-package,zte_mf287,ZTE MF287))
 $(eval $(call generate-ipq-wifi-package,zte_mf287plus,ZTE MF287Plus))
 $(eval $(call generate-ipq-wifi-package,zyxel_nbg7815,Zyxel NBG7815))
+$(eval $(call generate-ipq-wifi-package,xiaomi_ax1800,Xiaomi AX1800))
+$(eval $(call generate-ipq-wifi-package,zn_m2,ZN M2))
 
 $(foreach PACKAGE,$(ALLWIFIPACKAGES),$(eval $(call BuildPackage,$(PACKAGE))))
