@@ -15,7 +15,9 @@ ipq60xx_setup_interfaces()
 	jdcloud,re-cs-07|\
 	jdcloud,re-ss-01|\
 	qihoo,360v6|\
-	redmi,ax5-*|\
+	redmi,ax5*|\
+	xiaomi,ax1800|\
+	zn,m2|\
 	xiaomi,rm1800)
 		ucidef_set_interfaces_lan_wan "lan1 lan2 lan3" "wan"
 		;;
