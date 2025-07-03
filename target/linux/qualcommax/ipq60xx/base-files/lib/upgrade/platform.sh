@@ -11,6 +11,9 @@ platform_check_image() {
 platform_do_upgrade() {
 	case "$(board_name)" in
 	cmiot,ax18|\
+ 	redmi,ax5|\
+	xiaomi,ax1800|\
+	zn,m2|\
 	glinet,gl-ax1800|\
 	glinet,gl-axt1800|\
 	qihoo,360v6|\
