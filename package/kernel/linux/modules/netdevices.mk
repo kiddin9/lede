@@ -290,7 +290,9 @@ define KernelPackage/phy-broadcom
    TITLE:=Broadcom Ethernet PHY driver
    KCONFIG:=CONFIG_BROADCOM_PHY
    DEPENDS:=+kmod-libphy +kmod-phylib-broadcom
-   FILES:=$(LINUX_DIR)/drivers/net/phy/broadcom.ko
+   FILES:= \
+	$(LINUX_DIR)/drivers/net/phy/broadcom.ko \
+	$(LINUX_DIR)/drivers/net/phy/bcm-phy-ptp.ko
    AUTOLOAD:=$(call AutoLoad,18,broadcom,1)
 endef
 
