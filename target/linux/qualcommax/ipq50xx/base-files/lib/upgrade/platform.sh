@@ -102,6 +102,22 @@ platform_pre_upgrade() {
 
 platform_do_upgrade() {
 	case "$(board_name)" in
+	cmcc,pz-l8|\
+	elecom,wrc-x3000gs2|\
+	iodata,wn-dax3000gr)
+		local delay
+
+		delay=$(fw_printenv bootdelay)
+		[ -z "$delay" ] || [ "$delay" -eq "0" ] && \
+			fw_setenv bootdelay 3
+
+		elecom_upgrade_prepare
+
+		remove_oem_ubi_volume bt_fw
+		remove_oem_ubi_volume ubi_rootfs
+		remove_oem_ubi_volume wifi_fw
+		nand_do_upgrade "$1"
+		;;
 	glinet,gl-b3000)
 		nand_do_upgrade "$1"
 		;;
