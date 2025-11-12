@@ -5,6 +5,20 @@ define Device/EmmcImage
 	IMAGE/sysupgrade.bin/squashfs := append-rootfs | pad-to 64k | sysupgrade-tar rootfs=$$$$@ | append-metadata
 endef
 
+define Device/cmcc_pz-l8
+	$(call Device/FitImageLzma)
+	$(call Device/UbiFit)
+	DEVICE_VENDOR := CMCC
+	DEVICE_MODEL := PZ-L8
+	DEVICE_DTS_CONFIG := config@mp02.1
+	SOC := ipq5018
+	BLOCKSIZE := 128k
+	PAGESIZE := 2048
+	IMAGE_SIZE := 59392k
+	NAND_SIZE := 128m
+endef
+TARGET_DEVICES += cmcc_pz-l8
+
 define Device/glinet_gl-b3000
 	$(call Device/FitImage)
 	$(call Device/UbiFit)
