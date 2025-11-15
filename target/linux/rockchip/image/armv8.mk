@@ -366,6 +366,14 @@ define Device/hinlink_opc-ht2
 endef
 TARGET_DEVICES += hinlink_opc-ht2
 
+define Device/linkease_easepi-r1
+  DEVICE_VENDOR := LinkEase
+  DEVICE_MODEL := EasePi R1
+  SOC := rk3568
+  DEVICE_PACKAGES := blkdiscard block-mount kmod-button-hotplug kmod-nvme kmod-r8169
+endef
+TARGET_DEVICES += linkease_easepi-r1
+
 define Device/lyt_t68m
   DEVICE_VENDOR := LYT
   DEVICE_MODEL := T68M
