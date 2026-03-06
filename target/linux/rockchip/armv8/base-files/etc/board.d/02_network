@@ -67,6 +67,17 @@ rockchip_setup_interfaces()
 	friendlyarm,nanopi-r5s)
 		ucidef_set_interfaces_lan_wan 'eth1 eth2' 'eth0'
 		;;
+	friendlyarm,nanopi-neo3|\
+	friendlyarm,nanopc-t4|\
+	friendlyarm,nanopi-m4|\
+	friendlyarm,nanopi-m6|\
+	friendlyarm,nanopi-zero2|\
+	friendlyarm,nanopi-neo3-plus|\
+	friendlyarm,nanopi-neo4|\
+	friendlyarm,cm3588|\
+	friendlyarm,som-rk3399)
+		ucidef_set_interfaces_lan_wan 'wlan0' 'eth0'
+		;;
 	lyt,t68m)
 		ucidef_set_network_device_path lan1 'platform/fe2a0000.ethernet'
 		ucidef_set_network_device_path lan2 'platform/fe010000.ethernet'
