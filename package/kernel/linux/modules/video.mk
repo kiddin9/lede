@@ -764,15 +764,21 @@ $(eval $(call KernelPackage,drm-imx-ldb))
 
 define KernelPackage/drm-lima
   SUBMENU:=$(VIDEO_MENU)
-  TITLE:=DRM support for ARM Mali 400/450 GPU
-  DEPENDS:=@(TARGET_rockchip||TARGET_sunxi) +kmod-drm-sched
-  KCONFIG:=CONFIG_DRM_LIMA
-  FILES:=$(LINUX_DIR)/drivers/gpu/drm/lima/lima.ko
-  AUTOLOAD:=$(call AutoProbe,lima)
+  TITLE:=Mali-4xx GPU support
+  DEPENDS:=@(TARGET_rockchip||TARGET_sunxi) +kmod-drm +kmod-drm-shmem-helper
+  KCONFIG:= \
+	CONFIG_DRM_VGEM \
+	CONFIG_DRM_GEM_CMA_HELPER=y \
+	CONFIG_DRM_LIMA
+  FILES:= \
+	$(LINUX_DIR)/drivers/gpu/drm/vgem/vgem.ko \
+	$(LINUX_DIR)/drivers/gpu/drm/scheduler/gpu-sched.ko \
+	$(LINUX_DIR)/drivers/gpu/drm/lima/lima.ko
+  AUTOLOAD:=$(call AutoProbe,lima vgem)
 endef
 
 define KernelPackage/drm-lima/description
-  DRM driver for ARM Mali 400/450 GPUs
+  Open-source reverse-engineered driver for Mali-4xx GPUs
 endef
 
 $(eval $(call KernelPackage,drm-lima))
