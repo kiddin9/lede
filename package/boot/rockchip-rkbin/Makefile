@@ -44,8 +44,8 @@ endef
 
 define rkbin/rk3308
   DEPENDS:=@TARGET_rockchip_armv8
-  ATF:=rk33/rk3308_bl31_v2.27.elf
-  TPL:=rk33/rk3308_ddr_589MHz_uart2_m1_v2.10.bin
+  ATF:=rk33/rk3308_bl31_v2.26.elf
+  TPL:=rk33/rk3308_ddr_589MHz_uart2_m1_v2.09.bin
 endef
 
 define rkbin/rk3399
