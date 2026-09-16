@@ -27,8 +27,8 @@ endef
 define U-Boot/rk3308/Default
   BUILD_SUBTARGET:=armv8
   DEPENDS:=+PACKAGE_u-boot-$(1):rkbin-rk3308
-  ATF:=rk3308_bl31_v2.27.elf
-  TPL:=rk3308_ddr_589MHz_uart2_m1_v2.10.bin
+  ATF:=rk3308_bl31_v2.26.elf
+  TPL:=rk3308_ddr_589MHz_uart2_m1_v2.09.bin
 endef
 
 define U-Boot/rock-pi-s-rk3308
