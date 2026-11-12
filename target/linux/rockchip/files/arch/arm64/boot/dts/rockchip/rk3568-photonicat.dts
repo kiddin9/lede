@@ -545,6 +545,29 @@
 &uart4 {
 	dma-names = "tx", "rx";
 	status = "okay";
+
+	pcat-pm {
+		compatible = "photonicat-pm";
+		baudrate = <115200>;
+		pm-version = <1>;
+		power-gpio = <&gpio1 RK_PB2 GPIO_ACTIVE_HIGH>;
+		force-poweroff-timeout = <60>;
+
+		charger {
+			monitored-battery = <&battery>;
+		};
+
+		fan {};
+	};
+};
+
+&gpio4 {
+	aux-pwren {
+		gpio-hog;
+		gpios = <RK_PD2 GPIO_ACTIVE_HIGH>;
+		output-high;
+		line-name = "aux-pwren";
+	};
 };
 
 &usb_host0_ehci {
